@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d2tb3ows8nncd"]
+[gd_scene load_steps=34 format=3 uid="uid://d2tb3ows8nncd"]
 
 [ext_resource type="Texture2D" uid="uid://bv1dajv87xcgf" path="res://Assets/Actor/Characters/Princess/SpriteSheet.png" id="1_22ged"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_snm32"]
@@ -7,10 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bskigrudj0iia" path="res://Scenes/UI/inventory_ui.tscn" id="5_bqyug"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="6_qmovy"]
 [ext_resource type="PackedScene" uid="uid://cwrksoq33lk84" path="res://Scenes/UI/on_screen_ui.tscn" id="7_jgw1c"]
+[ext_resource type="Script" path="res://Scripts/tool_usage_system.gd" id="8_u46sr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3e45s"]
 atlas = ExtResource("1_22ged")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j58n6"]
+atlas = ExtResource("1_22ged")
+region = Rect2(16, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2aafv"]
 atlas = ExtResource("1_22ged")
@@ -32,6 +37,10 @@ region = Rect2(16, 48, 16, 16)
 atlas = ExtResource("1_22ged")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qu1q"]
+atlas = ExtResource("1_22ged")
+region = Rect2(0, 64, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6aiu"]
 atlas = ExtResource("1_22ged")
 region = Rect2(0, 0, 16, 16)
@@ -52,6 +61,10 @@ region = Rect2(0, 48, 16, 16)
 atlas = ExtResource("1_22ged")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgjp7"]
+atlas = ExtResource("1_22ged")
+region = Rect2(32, 64, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cexl2"]
 atlas = ExtResource("1_22ged")
 region = Rect2(32, 0, 16, 16)
@@ -71,6 +84,10 @@ region = Rect2(32, 48, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b72sm"]
 atlas = ExtResource("1_22ged")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_legsv"]
+atlas = ExtResource("1_22ged")
+region = Rect2(48, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ligx2"]
 atlas = ExtResource("1_22ged")
@@ -100,6 +117,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j58n6")
+}],
+"loop": false,
+"name": &"back_use_tool",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2aafv")
 }, {
 "duration": 1.0,
@@ -121,6 +146,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qu1q")
+}],
+"loop": false,
+"name": &"front_use_tool",
 "speed": 5.0
 }, {
 "frames": [{
@@ -150,6 +183,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lgjp7")
+}],
+"loop": false,
+"name": &"left_use_tool",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cexl2")
 }, {
 "duration": 1.0,
@@ -171,6 +212,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"right_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_legsv")
+}],
+"loop": false,
+"name": &"right_use_tool",
 "speed": 5.0
 }, {
 "frames": [{
@@ -197,7 +246,7 @@ script = ExtResource("1_snm32")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bgift")
-animation = &"right_walk"
+animation = &"front_idle"
 script = ExtResource("3_wo374")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -224,4 +273,16 @@ visible = false
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_qmovy")
 
+[node name="ToolUsageSystem" type="Node2D" parent="."]
+script = ExtResource("8_u46sr")
+
+[node name="ToolSprite" type="Sprite2D" parent="ToolUsageSystem"]
+
+[node name="Area2D" type="Area2D" parent="ToolUsageSystem/ToolSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToolUsageSystem/ToolSprite/Area2D"]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

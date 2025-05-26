@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D
+@onready var inventory: Inventory = $Inventory
 
 const SPEED = 5000.0
 
@@ -25,4 +26,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is PickUpItem:
+		inventory.add_item(area.inventory_item, area.count)
 		area.queue_free()

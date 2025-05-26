@@ -10,4 +10,4 @@ slot_type = "NotEquipable"
 ground_collision_shape = ExtResource("1_5y0bt")
 name = "Gold"
 texture = ExtResource("3_qas2i")
-max_stacks = 100
+max_count = 20

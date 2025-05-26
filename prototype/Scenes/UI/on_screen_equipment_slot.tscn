@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyolmx8qetgq7"]
+
+[ext_resource type="Texture2D" uid="uid://cgxwly37vgqxb" path="res://Assets/Ui/Dialog/FacesetBox.png" id="1_5jyeu"]
+[ext_resource type="Script" path="res://Scripts/on_screen_equipment_slot.gd" id="1_vxgph"]
+[ext_resource type="Theme" uid="uid://darf4yqg75v42" path="res://Resources/UI/theme.tres" id="2_hfr6v"]
+
+[node name="OnScreenEquipmentSlot" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vxgph")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_5jyeu")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CountLabel" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.917
+anchor_top = 0.95
+anchor_right = 0.917
+anchor_bottom = 0.95
+offset_left = -19.02
+offset_top = -19.0
+offset_right = -1.02
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_hfr6v")
+horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SlotLabel" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_hfr6v")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 12
+text = "TOOL"
+horizontal_alignment = 1
+vertical_alignment = 1

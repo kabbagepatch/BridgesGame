@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dcbvvdoapvab"]
+
+[ext_resource type="Shape2D" uid="uid://dy6vnjbhm2gn2" path="res://Resources/Wood/wood_collision_shape.tres" id="1_74ft2"]
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="2_ltsyp"]
+[ext_resource type="Texture2D" uid="uid://cj3nqsc0hvem" path="res://Assets/FX/Particle/WoodPlank.png" id="3_f0mx5"]
+
+[resource]
+script = ExtResource("2_ltsyp")
+slot_type = "Material"
+ground_collision_shape = ExtResource("1_74ft2")
+name = "Wood"
+texture = ExtResource("3_f0mx5")
+max_count = 20

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhlkbi155jofr"]
+
+[ext_resource type="Script" path="res://Scripts/treestump.gd" id="1_ygkel"]
+[ext_resource type="Texture2D" uid="uid://jhxb50113ywx" path="res://Assets/Backgrounds/Tilesets/TilesetNature.png" id="2_1ymd4"]
+[ext_resource type="Resource" uid="uid://dcbvvdoapvab" path="res://Resources/Wood/wood.tres" id="2_3jkij"]
+[ext_resource type="Shape2D" uid="uid://bwrruok80f0d5" path="res://Resources/TreeStump/treestump_collision_shape.tres" id="3_vma6g"]
+[ext_resource type="PackedScene" uid="uid://dvtyp0kbmb323" path="res://Scenes/health_system.tscn" id="4_tfpn3"]
+[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="6_h8wck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd01u"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hdjp"]
+bg_color = Color(0.419559, 0.671874, 0.43342, 1)
+
+[node name="TreeStump" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 22
+script = ExtResource("1_ygkel")
+item_to_drop = ExtResource("2_3jkij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ymd4")
+region_enabled = true
+region_rect = Rect2(64, 128, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_vma6g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("3_vma6g")
+
+[node name="HealthSystem" parent="." instance=ExtResource("4_tfpn3")]
+max_health = 100
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = -8.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cd01u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6hdjp")
+step = 1.0
+show_percentage = false
+script = ExtResource("6_h8wck")

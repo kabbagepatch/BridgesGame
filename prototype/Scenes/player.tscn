@@ -241,7 +241,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 14
+collision_mask = 38
 script = ExtResource("1_snm32")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -250,7 +250,6 @@ animation = &"front_idle"
 script = ExtResource("3_wo374")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = ExtResource("4_tg8nh")
 
@@ -258,10 +257,9 @@ shape = ExtResource("4_tg8nh")
 zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 8
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(0, 1)
 shape = ExtResource("4_tg8nh")
 
@@ -286,3 +284,4 @@ collision_mask = 32
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="ToolUsageSystem/ToolSprite/Area2D" to="ToolUsageSystem" method="_on_area_2d_body_entered"]

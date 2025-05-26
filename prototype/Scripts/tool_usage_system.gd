@@ -14,9 +14,6 @@ func _ready() -> void:
 	animated_sprite_2d.tool_use_animation_finished.connect(on_tool_use_animation_finished)
 
 func _input(event):
-	if Input.is_anything_pressed():
-		on_tool_use_animation_finished()
-
 	if Input.is_action_just_pressed("use_tool_action"):
 		if !can_use:
 			return
@@ -30,7 +27,10 @@ func _input(event):
 		active_tool_sprite.position = use_data.get("attachment_position")
 		active_tool_sprite.rotation_degrees = use_data.get("rotation")
 		active_tool_sprite.z_index = use_data.get("z_index")
+		active_tool_collision_shape_2d.disabled = false
 		active_tool_sprite.show()
+	elif Input.is_anything_pressed():
+		on_tool_use_animation_finished()
 
 func set_active_tool(tool: ToolItem):
 	if tool.collision_shape != null:
@@ -42,3 +42,8 @@ func set_active_tool(tool: ToolItem):
 func on_tool_use_animation_finished():
 	can_use = true
 	active_tool_sprite.hide()
+	active_tool_collision_shape_2d.disabled = true
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_node("HealthSystem"):
+		(body.find_child("HealthSystem") as HealthSystem).apply_damage(active_tool.damage)

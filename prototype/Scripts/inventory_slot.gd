@@ -38,7 +38,6 @@ func on_popup_menu_item_pressed(id: int):
 	
 	if pressed_menu_item.contains("Equip") and slot_type_to_equip != "NotEquipable":
 		equip_item.emit(slot_type_to_equip)
-		
 
 func add_item(item: InventoryItem):
 	var popup_menu: PopupMenu = menu_button.get_popup()

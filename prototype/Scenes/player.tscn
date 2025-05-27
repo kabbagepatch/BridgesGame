@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d2tb3ows8nncd"]
+[gd_scene load_steps=35 format=3 uid="uid://d2tb3ows8nncd"]
 
 [ext_resource type="Texture2D" uid="uid://bv1dajv87xcgf" path="res://Assets/Actor/Characters/Princess/SpriteSheet.png" id="1_22ged"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_snm32"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="6_qmovy"]
 [ext_resource type="PackedScene" uid="uid://cwrksoq33lk84" path="res://Scenes/UI/on_screen_ui.tscn" id="7_jgw1c"]
 [ext_resource type="Script" path="res://Scripts/tool_usage_system.gd" id="8_u46sr"]
+[ext_resource type="Script" path="res://Scripts/bridge_placement_system.gd" id="9_1cb4c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3e45s"]
 atlas = ExtResource("1_22ged")
@@ -281,6 +282,9 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToolUsageSystem/ToolSprite/Area2D"]
+
+[node name="BridgePlacementSystem" type="Node" parent="."]
+script = ExtResource("9_1cb4c")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

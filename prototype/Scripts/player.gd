@@ -4,8 +4,10 @@ class_name Player
 
 @onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D
 @onready var inventory: Inventory = $Inventory
+@onready var bridge_placement_system: BridgePlacementSystem = $BridgePlacementSystem
 
 const SPEED = 5000.0
+@export var direction: String
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -23,6 +25,18 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("right"):
+		direction = "right"
+	elif Input.is_action_pressed("left"):
+		direction = "left"
+	elif Input.is_action_pressed("up"):
+		direction = "up"
+	elif Input.is_action_pressed("down"):
+		direction = "down"
+	
+	if Input.is_action_just_pressed("place_bridge"):
+		bridge_placement_system.place_plank()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is PickUpItem:

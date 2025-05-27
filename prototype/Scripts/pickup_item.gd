@@ -6,6 +6,7 @@ class_name PickUpItem
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var label: Label = $Label
 
 @export var count: int = 1
 
@@ -13,3 +14,4 @@ class_name PickUpItem
 func _ready() -> void:
 	sprite_2d.texture = inventory_item.texture
 	collision_shape_2d.shape = inventory_item.ground_collision_shape
+	label.text = str(count) if count > 1 else ""

@@ -18,31 +18,36 @@ tile_map_data = PackedByteArray("AAAFAP3/AAANAA8AAAACAP3/AAAMAA8AAAACAPz/AAAMAA8
 tile_set = ExtResource("1_6fpbi")
 
 [node name="DecorationTileLayers" type="TileMapLayer" parent="TileLayers"]
+visible = false
 position = Vector2(-41, -11)
 tile_map_data = PackedByteArray("AAARAPr/AQABAA8AAAAQAPr/AQABAA8AAAAPAPr/AQABAA8AAAAOAPr/AQABAA8AAAANAPr/AQABAA8AAAAMAPr/AQABAA8AAAALAPr/AQABAA8AAAAKAPr/AQAAAA8AAAASAPr/AQACAA8AAAAFAOz/AwAKABQAAAAGAOz/AwALABQAAAAHAOz/AwAMABQAAAAHAOv/AwAMABQAAAAGAOv/AwALABQAAAAFAOv/AwAKABQAAAAHAO3/AwAMABUAAAAGAO3/AwALABUAAAAFAO3/AwAKABUAAAA=")
 tile_set = ExtResource("1_6fpbi")
 
 [node name="PickUpItem" parent="." instance=ExtResource("3_ihi48")]
-position = Vector2(-109, 102)
+position = Vector2(322, -107)
 inventory_item = ExtResource("4_oo8gg")
 count = 5
 
 [node name="PickUpItem2" parent="." instance=ExtResource("3_ihi48")]
+visible = false
 position = Vector2(-150, -34)
 inventory_item = ExtResource("5_y0eih")
 count = 17
 
 [node name="PickUpItem5" parent="." instance=ExtResource("3_ihi48")]
-position = Vector2(-51, -123)
+visible = false
+position = Vector2(-146, -106)
 inventory_item = ExtResource("5_y0eih")
 count = 17
 
 [node name="PickUpItem6" parent="." instance=ExtResource("3_ihi48")]
+visible = false
 position = Vector2(242, -47)
 inventory_item = ExtResource("5_y0eih")
 count = 17
 
 [node name="PickUpItem3" parent="." instance=ExtResource("3_ihi48")]
+visible = false
 position = Vector2(122, 58)
 inventory_item = ExtResource("5_y0eih")
 count = 12

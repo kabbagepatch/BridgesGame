@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://du3lr7ve3ely2"]
+
+[ext_resource type="Texture2D" uid="uid://b3lxvihrartqr" path="res://Assets/Backgrounds/Tilesets/TilesetWater.png" id="1_6dsw5"]
+[ext_resource type="Shape2D" uid="uid://bv3g16jcvypnc" path="res://Resources/BridgePlank/bridge_plank_collision_shape_2d.tres" id="2_jsx0l"]
+
+[node name="BridgePlank" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6dsw5")
+region_enabled = true
+region_rect = Rect2(16, 224, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_jsx0l")

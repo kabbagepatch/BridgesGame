@@ -12,4 +12,6 @@ var slot_type: String = "NotEquipable"
 @export var texture: Texture2D;
 @export var side_texture: Texture2D;
 @export var max_count : int
+@export var total_count : int = 0
 @export var tool_item: ToolItem
+@export var equipped: bool = false
